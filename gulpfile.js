@@ -3,16 +3,12 @@ var uglify = require("gulp-uglify");
 var plumber = require("gulp-plumber");
 
 // Webpack
-var webpack = require("gulp-webpack");
+var webpack = require("webpack-stream");
 var config = require("./webpack.config.js");
 
 // BrowserSync
-var browserSync = require("browser-sync");
+var browserSync = require("browser-sync").create();
 var reload = browserSync.reload;
-
-browserSync({
-        server: "./build"
-    });
 
 gulp.task("copy-libs", function(){
     return gulp.src([
@@ -28,15 +24,21 @@ gulp.task("copy-libs", function(){
 });
 
 gulp.task("webpack", function() {
-    gulp.src(config.entry)
+    return gulp.src(config.entry)
         .pipe(plumber())
         .pipe(webpack(config))
         .pipe(uglify())
-        .pipe(gulp.dest("build/js"))
-        .pipe(browserSync.reload({stream: true}));
+        .pipe(gulp.dest("build/js"));
 });
 
-gulp.task("watch", function(){
+gulp.task("dev-serve", function(){
+    browserSync.init({
+        server: "./build"
+    });
+    gulp.watch("build/**/*.*").on("change", reload);
+});
+
+gulp.task("watch", ["dev-serve"], function(){
     gulp.watch("src/**/*.ts", ["webpack"]);
 });
 
