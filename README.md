@@ -2,7 +2,7 @@
 
 Simple Angular2 project pattern using gulp and webpack. This repository constructs the same application with [official's 5 MIN QUICKSTART](https://angular.io/docs/ts/latest/quickstart.html).  
 
-# Getting started
+## Getting started
 
 ### Clone this repository
 ```shell
@@ -19,6 +19,23 @@ $ typings install
 ### Run gulp watcher
 ```shell
 $ gulp
+```
+
+## Structure
+```
+├── build
+│   ├── index.html
+│   └── js
+├── gulpfile.js
+├── package.json
+├── src
+│   ├── app.component.ts
+│   └── main.ts
+├── tsconfig.json
+├── typings.json
+├── webpack.config.js
+├── node_modules
+└── typings
 ```
 
 # License
