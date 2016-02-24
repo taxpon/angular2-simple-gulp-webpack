@@ -4,28 +4,43 @@ Simple Angular2 project pattern using gulp and webpack. This repository construc
 
 ## Getting started
 
-### Clone this repository
+##### 1.Clone this repository
 ```shell
 $ git clone https://github.com/taxpon/angular2-simple-gulp-webpack
 ```
-### Install npm libraries
+##### 2.Install npm libraries
 ```shell
 $ npm install
 ```
-### Install typings libraries
+##### 3.Install typings libraries
 ```shell
 $ typings install
 ```
-### Run gulp watcher
+##### 4.Copy node libraries to build directory
+```shell
+$ gulp copy-libs
+```
+##### 5.Run gulp watcher
 ```shell
 $ gulp
 ```
 
 ## Structure
 ```
+├── LICENSE
+├── README.md
 ├── build
 │   ├── index.html
 │   └── js
+│       ├── bundle.js
+│       └── lib
+│           ├── Rx.js
+│           ├── angular2-polyfills.js
+│           ├── angular2.dev.js
+│           ├── es6-shim.min.js
+│           ├── router.dev.js
+│           ├── system-polyfills.js
+│           └── system.src.js
 ├── gulpfile.js
 ├── package.json
 ├── src
@@ -33,9 +48,7 @@ $ gulp
 │   └── main.ts
 ├── tsconfig.json
 ├── typings.json
-├── webpack.config.js
-├── node_modules
-└── typings
+└── webpack.config.js
 ```
 
 # License
